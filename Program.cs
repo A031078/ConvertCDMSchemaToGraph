@@ -24,10 +24,10 @@ namespace convertCDMSchemaToGraph
     class Program
     {
         private static int EntityCount;
-        private const string hostName = "cdmcommon.gremlin.cosmos.azure.com";//"cseapp.gremlin.cosmos.azure.com";//"cseapp.documents.azure.com";
+        private const string hostName = "cdmgraph.gremlin.cosmos.azure.com";
         private const int port = 443;
-        private const string EndpointUrl = "https://cdmcommon.documents.azure.com:443/";//"https://cseapp.documents.azure.com:443/";
-        private const string PrimaryKey = "DgDfFI0k5NCvaxEFKUXXTGgpHyz8pUbfVzBAdBkCImz7DUBWJFDY2HUfOGrIAU37r7DhD2VVjzgtGAt97jkX9A==";//"1i7gebL2RHnVGb0suc2VRJiUYrv2N9zdtdyVV52KnNy1KpXNsznku9fBbpgQDrMtNyqcgK1o6gle9nBbZYFuJA==";
+        private const string EndpointUrl = "https://cdmgraph.documents.azure.com:443/";
+        private const string PrimaryKey = "4f7b831e-cd72-48d5-87be-4e6e9c69a807";
         private const string DBName = "CDMDB";
         private const string CollectionName = "cdmGraphCollection";
         private DocumentClient client;
@@ -39,8 +39,8 @@ namespace convertCDMSchemaToGraph
 
             Program p = new Program();
             Mapper.Initialize(cfg => { });
-            FilterAndRead("D:/CDM/CDM/schemaDocuments",p.allEntities);
-            //FilterAndRead("D:/tmp/sampleToDelete",p.allEntities);
+            FilterAndRead("D:/CDM/CDM/schemaDocuments",p.allEntities); //path to local file
+            
 
             //create dictionary to write via GremlinQuery
             p.CreateGremlinUploadDict(p.gremlinQueries,p.allEntities);
